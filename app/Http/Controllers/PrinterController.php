@@ -44,7 +44,7 @@ class PrinterController extends Controller
 
         Printer::create($request->all());
 
-        return redirect()->route('printer.index')->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route('printer.index')->with('success', 'printer berhasil ditambahkan');
     }
 
     /**
