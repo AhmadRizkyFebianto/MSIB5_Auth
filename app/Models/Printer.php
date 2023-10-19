@@ -16,8 +16,6 @@ class Printer extends Model
         'model',
         'price',
         'stock_quantity',
-        'specification',
-        'description'
     ];
 
     public function categories(): BelongsTo

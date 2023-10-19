@@ -56,7 +56,7 @@ Route::controller(PrinterController::class)->group(function(){
     Route::post('/printer','store')->name('printer.store');
     Route::get('/printer/{printers}','edit')->name('printer.edit');
     Route::put('update/{printers}', 'update')->name('printer.update');
-    Route::delete('destroy/{printers}', 'destroy')->name('printer.destroy');
+    Route::get('destroy/{printers}', 'destroy')->name('printer.destroy');
 });
 
 

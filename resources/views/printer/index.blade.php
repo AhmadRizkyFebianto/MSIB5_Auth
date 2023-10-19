@@ -29,11 +29,12 @@
                     <td>
                         <div class="d-flex justify-content-center align-items-center gap-2" role="group" aria-label="Basic example">
                             <a href="{{ route('printer.edit', $printers->id) }}" type="button" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('printer.destroy', $printers->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
+                            <a href="{{ route('printer.destroy', $printers->id) }}" type="button" class="btn btn-danger">Delete</a>
+                            {{-- <form action="{{ route('printer.destroy', $printers->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger m-0">Delete</button>
-                            </form>
+                            </form> --}}
                         </div>
                     </td>
                 </tr>
