@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,13 +23,42 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('auth')->group(function (){
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
-    Route::post('/login', [AuthController::class, 'loginAction'])->name('login.action');
+// Route::prefix('auth')->group(function (){
+//     Route::get('/login', [AuthController::class, 'login'])->name('login');
+//     Route::post('/login', [AuthController::class, 'loginAction'])->name('login.action');
+//     Route::get('/register', [AuthController::class,'register'])->name('register');
+//     Route::post('/register', [AuthController::class,'registerAction'])->name('register.action');
+//     Route::get('logout', 'logout')->middleware('auth')->name('logout');
+// });
 
-    Route::get('/register', [AuthController::class,'register'])->name('register');
-    Route::post('/register', [AuthController::class,'registerAction'])->name('register.action');
+Route::controller(AuthController::class)->group(function () {
+    Route::get('register', 'register')->name('register');
+    Route::post('register', 'registerSave')->name('register.save');
+
+    Route::get('login', 'login')->name('login');
+    Route::post('login', 'loginAction')->name('login.action');
+
+    Route::get('logout', 'logout')->middleware('auth')->name('logout');
 });
+
+Route::controller(CategoryController::class)->group(function (){
+    Route::get('/category', 'index')->name('categories.index');
+    Route::get('/category/create', 'create')->name('categories.create');
+    Route::post('/category', 'store')->name('categories.store');
+    Route::get('edit/{category}', 'edit')->name('categories.edit');
+    Route::put('update/{category}', 'update')->name('categories.update');
+    Route::delete('destroy/{category}', 'destroy')->name('categories.destroy');
+});
+
+Route::controller(PrinterController::class)->group(function(){
+    Route::get('/printer','index')->name('printer.index');
+    Route::get('/printer/create','create')->name('printer.create');
+    Route::post('/printer','store')->name('printer.store');
+    Route::get('/printer/{printers}','edit')->name('printer.edit');
+    Route::put('update/{printers}', 'update')->name('printer.update');
+    Route::delete('destroy/{printers}', 'destroy')->name('printer.destroy');
+});
+
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'admin'])->name('admin.dashboard');

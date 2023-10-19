@@ -14,43 +14,19 @@ class CategoriesSeeder extends Seeder
     public function run(): void
     {
         $category = new Categories();
-        $category->name_categories = 'Apple';
+        $category->name_categories = 'Hp';
         $category->save();
 
         $category = new Categories();
-        $category->name_categories = 'Google';
+        $category->name_categories = 'Canon';
         $category->save();
 
         $category = new Categories();
-        $category->name_categories = 'Huawei';
+        $category->name_categories = 'Epson';
         $category->save();
 
         $category = new Categories();
-        $category->name_categories = 'Oppo';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Realme';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Vivo';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Samsung';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Xiaomi';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Infinix';
-        $category->save();
-
-        $category = new Categories();
-        $category->name_categories = 'Asus';
+        $category->name_categories = 'Brother';
         $category->save();
     }
 }
